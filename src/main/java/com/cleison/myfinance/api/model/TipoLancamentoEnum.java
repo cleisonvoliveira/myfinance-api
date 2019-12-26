@@ -1,6 +1,6 @@
 package com.cleison.myfinance.api.model;
 
-public enum TipoLancamento {
+public enum TipoLancamentoEnum {
 
 	RECEITA,
 	DESPESA

@@ -5,10 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,7 +39,6 @@ public class PessoaResource {
 	
 	@PostMapping
 	public ResponseEntity<Pessoa> criarPessoa(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
-		
 		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaSalva.getCodigo()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
@@ -50,7 +47,6 @@ public class PessoaResource {
 	
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Pessoa> buscarPessoaPeloCodigo(@PathVariable Long codigo){
-		
 		return pessoaRepository.findById(codigo).map(pessoa -> ResponseEntity.ok(pessoa))
 				.orElse(ResponseEntity.notFound().build());
 		
@@ -58,7 +54,6 @@ public class PessoaResource {
 	
 	@GetMapping
 	public List<Pessoa> buscarPessoa(){
-		
 		return pessoaRepository.findAll();
 	}
 	
@@ -70,9 +65,13 @@ public class PessoaResource {
 	
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa){
-		
 		Pessoa pessoaSalva = pessoaService.atualizar(codigo, pessoa);
-		
 		return ResponseEntity.ok(pessoaSalva);
+	}
+	
+	@PutMapping("/{codigo}/ativo")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void atualizarPropriedadeAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo) {
+		pessoaService.atualizarPropriedadeAtivo(codigo,ativo);
 	}
 }

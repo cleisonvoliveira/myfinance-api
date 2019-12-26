@@ -3,6 +3,7 @@ package com.cleison.myfinance.api.exceptionhandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -40,7 +41,7 @@ public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		
 		String mensagemCliente = messageSource.getMessage("mensagem.invalida", null, LocaleContextHolder.getLocale());
-		String mensagemDesenvolvedor = ex.getCause().toString();
+		String mensagemDesenvolvedor = Optional.ofNullable(ex.getCause()).orElse(ex).toString();
 		
 		List<Erro> erros = Arrays.asList(new Erro(mensagemCliente, mensagemDesenvolvedor));
 		

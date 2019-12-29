@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cleison.myfinance.api.event.RecursoCriadoEvent;
 import com.cleison.myfinance.api.model.Lancamento;
 import com.cleison.myfinance.api.repository.LancamentoRepository;
+import com.cleison.myfinance.api.service.LancamentoService;
 
 @RequestMapping("/lancamentos")
 @RestController
@@ -27,6 +28,9 @@ public class LancamentoResource {
 	
 	@Autowired
 	private LancamentoRepository lancamentoRepository;
+	
+	@Autowired
+	private LancamentoService lancamentoService;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -43,7 +47,7 @@ public class LancamentoResource {
 	
 	@PostMapping
 	public ResponseEntity<Lancamento> criarLancamento(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response) {
-		Lancamento lancamentoSalvo = lancamentoRepository.save(lancamento);
+		Lancamento lancamentoSalvo = lancamentoService.salvar(lancamento);
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, lancamentoSalvo.getCodigo()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoSalvo);
 	}

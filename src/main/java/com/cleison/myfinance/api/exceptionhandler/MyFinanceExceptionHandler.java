@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.cleison.myfinance.api.exception.PessoaInexistenteOuInativaException;
+
 @ControllerAdvice
 public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 
@@ -41,14 +43,10 @@ public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 	@Override
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		
 		String mensagemCliente = messageSource.getMessage("mensagem.invalida", null, LocaleContextHolder.getLocale());
 		String mensagemDesenvolvedor = Optional.ofNullable(ex.getCause()).orElse(ex).toString();
-		
 		List<Erro> erros = Arrays.asList(new Erro(mensagemCliente, mensagemDesenvolvedor));
-		
 		return handleExceptionInternal(ex, erros, headers, status, request);
-		
 	}
 	
 	@ExceptionHandler({DataIntegrityViolationException.class})
@@ -56,9 +54,15 @@ public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 		String mensagemCliente = messageSource.getMessage("recurso.operacao-nao-permitida", null, LocaleContextHolder.getLocale());
 //		String mensagemDesenvolvedor = Optional.ofNullable(ex.getCause()).orElse(ex).toString();
 		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
-		
 		List<Erro> erros = Arrays.asList(new Erro(mensagemCliente, mensagemDesenvolvedor));
-		
+		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
+	
+	@ExceptionHandler({PessoaInexistenteOuInativaException.class})
+	public ResponseEntity<Object> handlePessoaInexistenteOuInativa(PessoaInexistenteOuInativaException ex, WebRequest request){
+		String mensagemCliente = messageSource.getMessage("recurso.pessoa-inexistente-ou-inativa", null, LocaleContextHolder.getLocale());
+		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
+		List<Erro> erros = Arrays.asList(new Erro(mensagemCliente, mensagemDesenvolvedor));
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 	
@@ -69,27 +73,18 @@ public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-
 		List<Erro> erros = criarListaErro(ex.getBindingResult());
-		
 		return handleExceptionInternal(ex, erros, headers, status, request);
 	}
 	
 	private List<Erro> criarListaErro(BindingResult bindingResult) {
-		
 		List<Erro> erros = new ArrayList<>();
-		
 		for (FieldError fieldErro : bindingResult.getFieldErrors()) {
-			
 			String mensagemCliente = messageSource.getMessage(fieldErro, LocaleContextHolder.getLocale());
 			String mensagemDesenvolvedor = fieldErro.toString();//mais detalhado para o desenvolvedor
-			
 			erros.add(new Erro(mensagemCliente, mensagemDesenvolvedor));
-			
 		}
-		
 		return erros;
-		
 	}
 	
 	public static class Erro {

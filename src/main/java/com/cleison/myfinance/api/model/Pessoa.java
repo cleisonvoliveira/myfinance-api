@@ -1,5 +1,7 @@
 package com.cleison.myfinance.api.model;
 
+import java.beans.Transient;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "pessoa")
@@ -55,6 +59,12 @@ public class Pessoa {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+	@JsonIgnore //Para ignorar o serializacao/deserializacao do jackson
+	@Transient //Para que o hibernate nao considere esse campo na insercao
+	public Boolean isInativo() {
+		return !this.ativo;
 	}
 
 	@Override

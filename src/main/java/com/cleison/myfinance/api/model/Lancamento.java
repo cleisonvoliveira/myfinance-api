@@ -28,7 +28,7 @@ public class Lancamento {
 	
 	@NotNull
 	@Column(name = "data_vencimento")
-	//@JsonFormat(pattern =  "dd/MM/yyyy") pode ser usado para formatar a data
+	//@JsonFormat(pattern =  "dd/MM/yyyy") poder usado para formatar a data
 	private LocalDate dataVencimento;
 	
 	@Column(name = "data_pagamento")

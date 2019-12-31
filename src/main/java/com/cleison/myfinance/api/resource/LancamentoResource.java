@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cleison.myfinance.api.event.RecursoCriadoEvent;
 import com.cleison.myfinance.api.model.Lancamento;
 import com.cleison.myfinance.api.repository.LancamentoRepository;
+import com.cleison.myfinance.api.repository.filter.LancamentoFilter;
 import com.cleison.myfinance.api.service.LancamentoService;
 
 @RequestMapping("/lancamentos")
@@ -36,8 +37,8 @@ public class LancamentoResource {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
-	public List<Lancamento> buscarLancamentos(){
-		return lancamentoRepository.findAll();
+	public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter){
+		return lancamentoRepository.filtrar(lancamentoFilter);
 	}
 	
 	@GetMapping("/{codigo}")

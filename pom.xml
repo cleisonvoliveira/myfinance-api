@@ -67,12 +67,20 @@
 		</dependency>
 
 		<!-- Para utilizar o static MetaModel classes do JPA provido pelo hibernate 
-			OBS: Foi incluida somente para baixar no pc para usarmos no STS-->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.hibernate</groupId> -->
-<!-- 			<artifactId>hibernate-jpamodelgen</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
+			OBS: Foi incluida somente para baixar no pc para usarmos no STS -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-jpamodelgen</artifactId> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
+
+		<!-- Para permitir utilizar o framework de autorizacao oAuth2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.4.0.RELEASE</version>
+		</dependency>
+
 
 	</dependencies>
 

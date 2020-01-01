@@ -20,7 +20,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -67,8 +66,13 @@ public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 	}
 	
 	@ExceptionHandler({EmptyResultDataAccessException.class})
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	protected void hangleEmptyResultDataAccessException() {}
+	protected ResponseEntity<Object> hangleEmptyResultDataAccessException(EmptyResultDataAccessException ex, WebRequest request) {
+		String mensagemCliente = messageSource.getMessage("recuros.nao-encontrado", null, LocaleContextHolder.getLocale());
+		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
+		List<Erro> erros = Arrays.asList(new Erro(mensagemCliente, mensagemDesenvolvedor));
+		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+		
+	}
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,

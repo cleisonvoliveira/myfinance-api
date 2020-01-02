@@ -66,14 +66,6 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
-		<!-- Para utilizar o static MetaModel classes do JPA provido pelo hibernate 
-			OBS: Foi incluida somente para baixar no pc para usarmos no STS -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.hibernate</groupId> -->
-		<!-- <artifactId>hibernate-jpamodelgen</artifactId> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
-
 		<!-- Para permitir utilizar o framework de autorizacao oAuth2 -->
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
@@ -81,6 +73,20 @@
 			<version>2.4.0.RELEASE</version>
 		</dependency>
 
+		<!-- Suporte ao JWT - JSon Web Tokens -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			<version>1.1.0.RELEASE</version>
+		</dependency>
+
+		<!-- Para utilizar o static MetaModel classes do JPA provido pelo hibernate 
+			OBS: Foi incluida somente para baixar no pc para usarmos no STS -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-jpamodelgen</artifactId> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
 
 	</dependencies>
 

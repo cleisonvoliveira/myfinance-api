@@ -9,7 +9,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
@@ -19,7 +18,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE) // Precisa ter a prioridade alta para que seja analisada antes de todo mundo
+@Order(Ordered.HIGHEST_PRECEDENCE) // Definindo com prioridade alta para que seja analisada antes de todo mundo
 public class RefreshTokenCookiePreProcessorFilter implements Filter {
 
 	@Override

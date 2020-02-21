@@ -30,7 +30,7 @@ public class CorsFilter implements Filter{
 		response.setHeader("Access-Control-Allow-Origin", originPermitido); 
 		response.setHeader("Access-Control-Allow-Credentials", "true"); 
 		
-		//Se a origenPermitido for a mesma Origin que veio do browser e se for uma requisicao OPTIONS, entao sera permitido.
+		//Se a originPermitido for a mesma Origin que veio do browser e se for uma requisicao OPTIONS, entao sera permitido.
 		if("OPTIONS".equals(request.getMethod()) && originPermitido.equals(request.getHeader("Origin"))) {
 			
 			response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE,PUT,OPTIONS");

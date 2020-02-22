@@ -1,15 +1,20 @@
 package com.cleison.myfinance.api.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
 
 @Configuration
 //@EnableWebSecurity
 @EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true) //Habilitando a segurança nos métodos
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 //	@Autowired
@@ -38,9 +43,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		resources.stateless(Boolean.TRUE);
 	}
 	
-//	@Bean            
-//	public PasswordEncoder passwordEncode() {
-//		return new BCryptPasswordEncoder();
-//	}
+	@Bean
+	public MethodSecurityExpressionHandler createExpressionHandler() {
+		return new OAuth2MethodSecurityExpressionHandler();
+	}
 	
 }

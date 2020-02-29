@@ -38,8 +38,8 @@ public class CategoriaResource {
 	}
 	
 	@PostMapping  
-	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('read')")//Definindo regra de escopo
-//	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA')")
+//	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('read')")//Definindo regra de escopo
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA')")
 	public ResponseEntity<Categoria> criarCategoria(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
 		
 		Categoria categoriaSalva = categoriaRepository.save(categoria);
@@ -48,6 +48,7 @@ public class CategoriaResource {
 	}
 	
 	@GetMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA')")
 	public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
 		
 		return categoriaRepository.findById(codigo).map(categoria -> ResponseEntity.ok(categoria))

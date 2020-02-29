@@ -13,15 +13,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-	
+
 	@Id
 	private Long codigo;
 	private String nome;
 	private String email;
 	private String senha;
-	
-	@ManyToMany(fetch = FetchType.EAGER)//TODO: Por enquanto, depois será alterado
-	@JoinTable(name = "usuario_permissao",joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
+
+	@ManyToMany(fetch = FetchType.EAGER) // TODO: Por enquanto, depois será alterado
+	@JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
 	private List<Permissao> permissoes;
 
 	public Long getCodigo() {
@@ -88,6 +88,5 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
 
 }

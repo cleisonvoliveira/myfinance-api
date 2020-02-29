@@ -10,15 +10,19 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import com.cleison.myfinance.api.config.property.MyFinanceApiProperty;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter{
 
-	private String originPermitido = "http://localhost:8000"; //TODO: Configurar para diferentes ambientes
+	@Autowired
+	private MyFinanceApiProperty myFinanceApiProperties;
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
@@ -27,11 +31,11 @@ public class CorsFilter implements Filter{
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		
-		response.setHeader("Access-Control-Allow-Origin", originPermitido); 
+		response.setHeader("Access-Control-Allow-Origin", myFinanceApiProperties.getOriginPermitido()); 
 		response.setHeader("Access-Control-Allow-Credentials", "true"); 
 		
 		//Se a originPermitido for a mesma Origin que veio do browser e se for uma requisicao OPTIONS, entao sera permitido.
-		if("OPTIONS".equals(request.getMethod()) && originPermitido.equals(request.getHeader("Origin"))) {
+		if("OPTIONS".equals(request.getMethod()) && myFinanceApiProperties.getOriginPermitido().equals(request.getHeader("Origin"))) {
 			
 			response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE,PUT,OPTIONS");
 			response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");

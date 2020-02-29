@@ -87,7 +87,13 @@
 		<!-- <artifactId>hibernate-jpamodelgen</artifactId> -->
 		<!-- <scope>provided</scope> -->
 		<!-- </dependency> -->
-
+		
+		<!-- Dependecia usada para habilitar o profile do spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>

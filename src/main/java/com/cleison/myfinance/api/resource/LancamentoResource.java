@@ -24,6 +24,7 @@ import com.cleison.myfinance.api.event.RecursoCriadoEvent;
 import com.cleison.myfinance.api.model.Lancamento;
 import com.cleison.myfinance.api.repository.LancamentoRepository;
 import com.cleison.myfinance.api.repository.filter.LancamentoFilter;
+import com.cleison.myfinance.api.repository.projection.ResumoLancamento;
 import com.cleison.myfinance.api.service.LancamentoService;
 
 @RequestMapping("/lancamentos")
@@ -43,6 +44,12 @@ public class LancamentoResource {
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
 	public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable){
 		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
+	}
+	
+	@GetMapping(params = "resumo")// usando o params para a projecao
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
+	public Page<ResumoLancamento> resumo(LancamentoFilter lancamentoFilter, Pageable pageable){
+		return lancamentoRepository.resumir(lancamentoFilter, pageable);
 	}
 	
 	@GetMapping("/{codigo}")

@@ -1,1 +1,0 @@
-web: java -jar target/myfinance-api-1.0.jar

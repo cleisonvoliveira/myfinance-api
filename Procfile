@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod,oauth-security $JAVA_OPTS -jar target/myfinance*.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod,oauth-security -Dmyfinance.origin-permitido=true $JAVA_OPTS -jar target/myfinance*.jar

@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.cleison.myfinance-api</groupId>
 	<artifactId>myfinance-api</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>myfinance-api</name>
 	<description>Demo project for Spring Boot</description>
 

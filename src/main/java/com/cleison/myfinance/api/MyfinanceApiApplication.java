@@ -6,6 +6,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import com.cleison.myfinance.api.config.property.MyFinanceApiProperty;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @SpringBootApplication
 @EnableConfigurationProperties(MyFinanceApiProperty.class)
 public class MyfinanceApiApplication {

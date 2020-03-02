@@ -2,6 +2,10 @@ package com.cleison.myfinance.api.config.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @ConfigurationProperties("myfinance")
 public class MyFinanceApiProperty {
 	

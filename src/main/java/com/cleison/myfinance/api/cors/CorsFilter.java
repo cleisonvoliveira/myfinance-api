@@ -17,6 +17,10 @@ import org.springframework.stereotype.Component;
 
 import com.cleison.myfinance.api.config.property.MyFinanceApiProperty;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter{

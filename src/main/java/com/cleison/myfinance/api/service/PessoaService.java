@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.cleison.myfinance.api.model.Pessoa;
 import com.cleison.myfinance.api.repository.PessoaRepository;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Service
 public class PessoaService {
 	

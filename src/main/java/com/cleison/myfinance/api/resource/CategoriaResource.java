@@ -21,6 +21,10 @@ import com.cleison.myfinance.api.event.RecursoCriadoEvent;
 import com.cleison.myfinance.api.model.Categoria;
 import com.cleison.myfinance.api.repository.CategoriaRepository;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaResource {

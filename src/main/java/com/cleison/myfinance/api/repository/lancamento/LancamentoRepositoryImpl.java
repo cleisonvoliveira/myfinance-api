@@ -1,38 +1,29 @@
 package com.cleison.myfinance.api.repository.lancamento;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.EntityManager;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
-import com.cleison.myfinance.api.model.Categoria;
 import com.cleison.myfinance.api.model.Lancamento;
-import com.cleison.myfinance.api.model.Pessoa;
-import com.cleison.myfinance.api.model.TipoLancamentoEnum;
 import com.cleison.myfinance.api.repository.filter.LancamentoFilter;
 import com.cleison.myfinance.api.repository.projection.ResumoLancamento;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 
 	@PersistenceContext

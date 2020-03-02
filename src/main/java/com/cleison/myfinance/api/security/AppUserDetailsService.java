@@ -18,6 +18,10 @@ import com.cleison.myfinance.api.model.Permissao;
 import com.cleison.myfinance.api.model.Usuario;
 import com.cleison.myfinance.api.repository.UsuarioRepository;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Service
 public class AppUserDetailsService implements UserDetailsService{
 

@@ -7,6 +7,10 @@ import org.springframework.security.core.userdetails.User;
 
 import com.cleison.myfinance.api.model.Usuario;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 public class UsuarioSistema extends User{
 
 	private static final long serialVersionUID = 1L;

@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cleison.myfinance.api.config.property.MyFinanceApiProperty;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Profile("oauth-security")
 @RestController
 @RequestMapping("/tokens")

@@ -4,6 +4,10 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 public class LancamentoFilter {
 	
 	private String descricao;

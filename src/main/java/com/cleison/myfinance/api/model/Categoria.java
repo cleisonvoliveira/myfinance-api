@@ -10,6 +10,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Entity
 @Table (name = "categoria")
 public class Categoria {

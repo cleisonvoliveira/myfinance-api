@@ -2,6 +2,10 @@ package com.cleison.myfinance.api.model;
 
 import javax.persistence.Embeddable;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Embeddable
 public class Endereco {
 	

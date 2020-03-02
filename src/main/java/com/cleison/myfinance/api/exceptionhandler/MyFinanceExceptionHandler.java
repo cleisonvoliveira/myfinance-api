@@ -25,6 +25,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.cleison.myfinance.api.exception.PessoaInexistenteOuInativaException;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @ControllerAdvice
 public class MyFinanceExceptionHandler extends ResponseEntityExceptionHandler{
 

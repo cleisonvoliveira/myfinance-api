@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Entity
 @Table(name = "permissao")
 public class Permissao {

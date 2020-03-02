@@ -10,6 +10,10 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
 import com.cleison.myfinance.api.security.UsuarioSistema;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 public class CustomTokenEnhancer implements TokenEnhancer{
 
 	@Override

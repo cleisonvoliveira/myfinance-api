@@ -10,6 +10,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cleison.myfinance.api.event.RecursoCriadoEvent;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Component
 public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoEvent>{
 

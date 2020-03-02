@@ -20,6 +20,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.cleison.myfinance.api.config.property.MyFinanceApiProperty;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Profile("oauth-security")
 @ControllerAdvice
 public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken>{

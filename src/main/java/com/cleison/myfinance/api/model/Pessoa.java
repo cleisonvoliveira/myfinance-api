@@ -12,6 +12,10 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {

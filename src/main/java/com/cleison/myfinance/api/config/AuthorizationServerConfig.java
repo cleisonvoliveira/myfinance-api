@@ -20,6 +20,10 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import com.cleison.myfinance.api.config.token.CustomTokenEnhancer;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Profile("oauth-security")
 @Configuration
 @EnableAuthorizationServer

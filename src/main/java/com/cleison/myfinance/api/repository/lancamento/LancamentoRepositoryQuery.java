@@ -7,6 +7,10 @@ import com.cleison.myfinance.api.model.Lancamento;
 import com.cleison.myfinance.api.repository.filter.LancamentoFilter;
 import com.cleison.myfinance.api.repository.projection.ResumoLancamento;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 public interface LancamentoRepositoryQuery {
 
 	public Page<Lancamento> filtrar(LancamentoFilter lancamentoFilter, Pageable pageable);

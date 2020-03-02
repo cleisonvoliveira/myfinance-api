@@ -18,6 +18,10 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Profile("oauth-security")
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE) // Definindo com prioridade alta para que seja analisada antes de todo mundo

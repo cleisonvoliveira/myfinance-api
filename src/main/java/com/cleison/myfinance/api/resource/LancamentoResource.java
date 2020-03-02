@@ -27,6 +27,10 @@ import com.cleison.myfinance.api.repository.filter.LancamentoFilter;
 import com.cleison.myfinance.api.repository.projection.ResumoLancamento;
 import com.cleison.myfinance.api.service.LancamentoService;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @RequestMapping("/lancamentos")
 @RestController
 public class LancamentoResource {

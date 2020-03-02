@@ -25,6 +25,10 @@ import com.cleison.myfinance.api.model.Pessoa;
 import com.cleison.myfinance.api.repository.PessoaRepository;
 import com.cleison.myfinance.api.service.PessoaService;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @RequestMapping("/pessoas")
 @RestController
 public class PessoaResource {

@@ -12,6 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Profile("basic-security")
 @EnableWebSecurity
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{

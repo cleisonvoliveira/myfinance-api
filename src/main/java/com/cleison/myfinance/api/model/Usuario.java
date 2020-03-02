@@ -10,6 +10,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+/**
+ * @author cleison.oliveira
+ *
+ */
 @Entity
 @Table(name = "usuario")
 public class Usuario {
